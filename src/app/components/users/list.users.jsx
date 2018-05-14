@@ -4,6 +4,7 @@ import {
     Create, SimpleForm, TextInput, SelectInput, ReferenceInput,
     Edit, DisabledInput
 } from 'admin-on-rest';
+import sha256 from 'sha256';
 
 export const UserList = (props) => {
     return (
@@ -21,8 +22,9 @@ export const UserList = (props) => {
 export const UserCreate = (props) => {
     return (
         <Create { ...props }>
-            <SimpleForm>
+            <SimpleForm redirect="list">
                 <TextInput source="username" />
+                <TextInput source="password" type="password" />
                 <ReferenceInput label="Role" source="roleId" reference="roles">
                     <SelectInput optionText="roleName" />
                 </ReferenceInput>
@@ -40,6 +42,7 @@ export const UserEdit = (props) => {
         <Edit title={ <UserEditTitle/> } { ...props }>
             <SimpleForm>
                 <DisabledInput source="username" />
+                <TextInput source="password" type="password" />
                 <ReferenceInput label="Role" source="roleId" reference="roles">
                     <SelectInput optionText="roleName" />
                 </ReferenceInput>
