@@ -14,7 +14,7 @@ export const GamesList = (props) => {
 
 export const GamesCreate = (props) => {
     return (
-        <Create {...props}>
+        <Create { ...props }>
             <SimpleForm>
                 <TextInput source="title" />
             </SimpleForm>
